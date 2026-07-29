@@ -1,0 +1,13 @@
+# Copy to terraform.tfvars and adjust.
+
+location            = "uksouth"
+resource_group_name = "rg-vnet-restricted-uksouth-001"
+
+# The ONE user allowed to modify the resources (their Entra ID object ID / GUID).
+modify_principal_object_id = "00000000-0000-0000-0000-000000000000"
+
+# Recommended: also exclude the identity Terraform authenticates as, otherwise
+# subsequent `terraform apply` runs will be denied by the lock.
+additional_excluded_principal_ids = [
+  # "11111111-1111-1111-1111-111111111111",
+]
